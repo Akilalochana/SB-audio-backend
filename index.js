@@ -3,10 +3,16 @@ import express from "express";
 import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import dotenv from "dotenv";
+import reviewRouter from "./routes/reviewRouter.js";
+import productRouter from "./routes/productRouter.js";
+import inquiryRouter from "./routes/inquiryRouter.js";
+import cors from "cors";
 
 dotenv.config();
 
 let app = express()
+
+app.use(cors());
 
 app.use(bodyParser.json());//kiywgnn beri jason tika lassna krnw
 
@@ -24,7 +30,10 @@ connection.once("open", ()=>{
 })
 
 
-app.use("/api/users",userRouter)
+app.use("/api/users",userRouter);
+app.use("/api/products",productRouter);
+app.use("/api/reviews", reviewRouter);
+app.use("/api/inquiries", inquiryRouter);
 
 app.listen(3000,()=>{
     console.log("server is running on prot 3000")
