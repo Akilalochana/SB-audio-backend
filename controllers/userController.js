@@ -41,7 +41,7 @@ export function loginUser(req, res){
                         role : user.role
                     },"kv-secret-89!")
 
-                    res.json({message:"loging sucess" , token : token});
+                    res.json({message:"loging sucess" , token : token, user : user});
                 }else{
                     res.status(401).json({error:"login faild"});
                 }
