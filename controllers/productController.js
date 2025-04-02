@@ -39,7 +39,7 @@ export async function addProduct(req, res){
 export async function getProducts(req, res){
 
     try{
-        if(isItAdmin){
+        if(isItAdmin(req.user)){
             const products = await Product.find();
             res.json(products);
             return;

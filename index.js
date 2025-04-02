@@ -7,6 +7,7 @@ import reviewRouter from "./routes/reviewRouter.js";
 import productRouter from "./routes/productRouter.js";
 import inquiryRouter from "./routes/inquiryRouter.js";
 import cors from "cors";
+import jwt from "jsonwebtoken";
 
 dotenv.config();
 
@@ -16,6 +17,23 @@ app.use(cors());
 
 app.use(bodyParser.json());//kiywgnn beri jason tika lassna krnw
 
+app.use((req, res, next)=>{
+    let token = req.headers["authorization"];
+
+
+    if(token!=null){
+        token = token.replace("Bearer ","");
+        
+        jwt.verify(token, "kv-secret-89!",
+        (err, decoded)=>{
+
+            if(!err){
+                req.user = decoded;
+            }
+        });
+    }
+    next();
+})
 
 
 let mongoUrl = process.env.MONGO_URL;

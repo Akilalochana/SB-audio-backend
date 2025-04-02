@@ -70,3 +70,13 @@ export function isItCustomer(req){
     }
     return isCustomer;
 }
+
+
+// customer
+//akila1@gmail.com
+//123aa
+
+
+// admin
+//akila2@gmail.com
+//123aa2

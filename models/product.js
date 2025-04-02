@@ -19,6 +19,10 @@ const productSchema = new mongoose.Schema({
         required : true,
         default :"uncategorized"
     },
+    dimensions :{
+        type : String,
+        required : true
+    },
     description : {
         type : String,
         required : true
@@ -37,4 +41,4 @@ const productSchema = new mongoose.Schema({
 
 const product = mongoose.model("products",productSchema)
 
-export default productSchema;
+export default product;
