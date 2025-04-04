@@ -39,7 +39,7 @@ export async function addProduct(req, res){
 export async function getProducts(req, res){
 
     try{
-        if(isItAdmin(req.user)){
+        if(isItAdmin(req)){
             const products = await Product.find();
             res.json(products);
             return;
@@ -83,7 +83,7 @@ export async function updateProduct(req, res){
 
 export async function deleteProduct(req, res){
     try{
-        if(isItAdmin){
+        if(isItAdmin(req)){
             const key = req.params.key;
             await Product.deleteOne({key:key});
             res.json({
