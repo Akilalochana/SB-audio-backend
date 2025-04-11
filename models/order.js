@@ -58,9 +58,14 @@ const oderSchema = new mongoose.Schema({
         required: true
     },
     isAppoved :{
-        type : Boolean,
+        type : String,
         required : true,
         default : false
+    },
+    status : {
+        type : String,
+        required : true,
+        default : "Pending"
     },
 
     totalAmount:{
